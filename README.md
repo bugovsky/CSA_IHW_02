@@ -20,24 +20,34 @@
 ![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/transform.png)
 
 3. Удалим все лишнее из ассемблерной программы (все, что **не влияет** на работу программы):
-    -  - информацию о названии файла, из которого программа была получена.
+    - `	.file	"sequence.c"` -  информацию о названии файла, из которого программа была получена.
     - Информацию об экспорте символов методов:
     
        ```
-       
+        .type	input, @function
+        .type	GetSequence, @function
+        .type	output, @function
+        .type	main, @function
        ```
      - Информацию о трансформации кода в язык ассемблера:
      
        ```
-      	
+      	.ident	"GCC: (Ubuntu 11.2.0-19ubuntu1) 11.2.0"
+
+	    .section	.note.GNU-stack,"",@progbits
        ```
      - Информацию о размере функций:
        ```
-       
+        .size	input, .-input
+        .size	GetSequence, .-GetSequence
+        .size	output, .-output
+        .size	main, .-main
        ```
      - Следующие объявления:
        ```
-       
+        .globl	input
+        .globl	GetSequence
+        .globl	output
        ```
        `.globl	main` нужно оставить, иначе программу невозможно скомпилировать
      - Не забываем про макрос **leave**, его нужно заменить во всей программе на
