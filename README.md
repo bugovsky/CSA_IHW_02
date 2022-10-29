@@ -18,7 +18,7 @@
 1. Изначально была написана [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c) - программа на языке Си.
 2. Проведем тестовые прогоны для [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c):
 
-	![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/asm_tests.png)
+![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/asm_tests.png)
 
 Вывод программы не отличается от правильного ответа, значит, программа на языке Си работает корректно.
 
@@ -75,7 +75,7 @@ gcc -O0 -Wall -masm=intel -S -fno-asynchronous-unwind-tables -fcf-protection=non
 6. [sequence_final.s](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence_final.s) - итоговая программа на языке ассемблера.
 7. Проведем тестовые прогоны для [sequence_final.s](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence_final.s) и сравним эквивалентность функционирования данной программы и [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c)
     
-	![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/c_tests.png)  
+![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/c_tests.png)  
 	
 Вывод ассемблерной программы не отличается от правильного ответа на каждом тесте, а также совпадает с результатами тестов программы на Си, заключаем, что модификация ассемблерной программмы произведена верно, и данная программа работает корректно.  
 
