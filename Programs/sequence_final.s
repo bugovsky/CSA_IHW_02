@@ -3,7 +3,7 @@
 input:
 	push	rbp					# Эпилог функции
 	mov	rbp, rsp
-	sub	rsp, 32
+	sub	rsp, 72
 	
 	push	rbx
 	push	r12
@@ -43,7 +43,7 @@ input:
 	pop	r12
 	pop	rbx
 	
-	add rsp, 32					# Эпилог функции
+	add rsp, 72					# Эпилог функции
 	mov rsp, rbp
 	pop rbp
 	ret
@@ -115,13 +115,14 @@ GetSequence:
 	cmp	rbx, -1					# Сравниваем end_index с единицей
 	jne	.L13					# Если end_index НЕ равен единице, то переходим к метке .L13
 
+	mov	rbx, rsi
 	mov	rsi, rcx				# Иначе кладем в rsi значение длины последовательности - второй фактический аргумент 
 	lea	rax, .LC0[rip]
 	mov	rdi, rax				# Загружаем в rdi строку "There is no sequence with size = %d" - первый фактический аргумент 
 	mov	eax, 0
 	call	printf@PLT				# Вызываем встроенный в Си printf
-	mov	rax, 0
-	mov	[rbx], rax				# Кладем первым элементом нулевой символ
+	mov	al, 0
+	mov	[rbx], al				# Кладем первым элементом нулевой символ
 	jmp	.L18					# Безусловный переход к метке .L18
 .L13:
 	jmp	.L15					# Безусловный переход к метке .L15
@@ -135,8 +136,8 @@ GetSequence:
 .L15:
 	cmp	r12, rbx				# Сравниваем start_index и end_index
 	jle	.L16					# Если start_index <= end_index, то переходим к .L16
-	mov	rax, 0
-	mov	[rsi], rax				# Кладем последним элементом в последовательность нулевой символ
+	mov	al, 0
+	mov	[rsi], al				# Кладем последним элементом в последовательность нулевой символ
 .L18:
 	nop
 	
@@ -154,7 +155,7 @@ GetSequence:
 output:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 32
+	sub	rsp, 72
 	
 	push	rbx
 	push	r12
@@ -177,7 +178,7 @@ output:
 	pop	r12
 	pop 	rbx
 	
-	add rsp, 32					# Эпилог функции
+	add rsp, 72					# Эпилог функции
 	mov rsp, rbp
 	pop rbp
 	ret
@@ -277,5 +278,3 @@ main:
 	mov rsp, rbp
 	pop rbp
 	ret
-
-	
