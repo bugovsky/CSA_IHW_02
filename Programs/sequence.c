@@ -2,18 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-void input(char *str, int max_size) {
-    int current_size = 0;
-    str[current_size] = getchar();
-    while (str[current_size] != '\n') {
-        ++current_size;
-        if (current_size == max_size) {
-            max_size *= 2;
-            str = realloc(str, max_size * sizeof(char));
-        }
-        str[current_size] = getchar();
-    }
-    str[current_size] = '\0';
+void input(char *str) {
+    int counter = 0;
+    int current_char;
+    do {
+        current_char = fgetc(stdin);
+        str[counter] = current_char;
+        ++counter;
+    } while(current_char != EOF && counter < 100000);
+    str[counter - 1] = '\0';
 }
 
 void GetSequence(char *input, char *sequence, int input_size, int sequence_size) {
@@ -35,8 +32,8 @@ void GetSequence(char *input, char *sequence, int input_size, int sequence_size)
             start_index = -1;
         }
     }
-    if (end_index == -1) {
-        printf("There is no sequence with size = %d", sequence_size);
+    if (end_index - start_index + 1 < sequence_size) {
+        printf("There is no sequence with size = %d\n", sequence_size);
         sequence[0] = '\0';
     } else {
         for (int i = start_index; i <= end_index; ++i) {
@@ -57,18 +54,20 @@ void output(char *str) {
 }
 
 int main() {
-    int max_size = 10000;
-    char *input_str = malloc(max_size * sizeof(char));
-    input(input_str, max_size);
-    int input_size = strlen(input_str);
     int n;
     scanf("%d", &n);
+    char *input_str = malloc(100000 * sizeof(char));
+    input(input_str);
+    int input_size = strlen(input_str);
     char *sequence = malloc((n + 1) * sizeof(char));
-    if (n <=0 || n > input_size || n > 127) {
+    if (n <=0 || n > input_size) {
         printf("Incorrect size\n");
     } else {
         GetSequence(input_str, sequence, input_size, n);
+        if (strlen(sequence) > 0) {
+        printf("Sequence:");
         output(sequence);
+        }
     }
     free(input_str);
     free(sequence);
