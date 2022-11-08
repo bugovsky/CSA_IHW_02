@@ -17,7 +17,7 @@
 
 Теперь перейдем к этапам выполнения ИДЗ:
 1. Изначально была написана [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c) - программа на языке Си.
-2. Проведем тестовые прогоны для [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c):
+2. Проведем тестовые прогоны для [sequence.c](https://github.com/bugovsky/CSA_IHW_02/blob/main/Programs/sequence.c) ([тесты](https://github.com/bugovsky/CSA_IHW_02/tree/main/Tests) - с помощью них будет проверяться корректная работа программы):
 
 ![](https://github.com/bugovsky/CSA_IHW_02/blob/main/Images/c_tests.png)
 
