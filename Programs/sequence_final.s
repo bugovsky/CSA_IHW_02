@@ -1,4 +1,3 @@
-	.file	"sequence.c"
 	.intel_syntax noprefix
 	.text
 input:
